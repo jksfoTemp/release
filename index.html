@@ -3,210 +3,50 @@ https://www.startpage.com/do/search?q=dog
 -->
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Cheeses Loves You</title>
+  <head>
+    <title>Cheeses Loves You</title>
     <!-- 
-    TODO: break out CSS and JS into separate files
     TODO: uncomment fullscreen after dev 
-    TODO: textbox onclick clear content, keep focus and display or former text
-    TODO: onkeypress display search argument and keep it, perhaps stash it in local storage or history? 
-    TODO: uncomment fullscreen after dev 
-    Because I always forget the syntax
-    <link rel="stylesheet" href="fooCSS/foo.css">
-    <script src="fooScript/foo.js"></script>
+    TODO: ? textbox onclick clear content, keep focus and display or former text
+    TODO: ? onkeypress display search argument and keep it, perhaps stash it in local storage or history? 
+    TODO: ? uncomment fullscreen after dev 
   -->
-<style>
-    :root {
-      --myTextColor: yellow; 
-      --myMenuColor: gray; 
-      --myBackColor: black;
-      --myFont: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-      --myFontSize: 12;
-    }
-    /* https://stackoverflow.com/questions/7179535/set-window-to-fullscreen-real-fullscreen-f11-functionality-by-javascript */
-    *:fullscreen
-    *:-ms-fullscreen,
-    *:-webkit-full-screen,
-    *:-moz-full-screen {
-      overflow: auto !important;
-    }
-    html, body {
-      /* height: 100%; */
-      margin: 0;
-      justify-content: center;
-      align-items: center;
-      font-family: var(--myFont);
-      background-color: var(--myBackColor);
-      color: var(--myTextColor);
-      text-align: center;
-    }
-    h1, h2 {
-      text-align: center;
-    }
-    .container {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-template-rows: 2em 1fr 2em;
-      height: 100vh;
-      margin: 0;
-    }
-    .row1 {
-      grid-column: 1 / 4; 
-      grid-row: 1 / 2;
-      display: flex;          
-      align-items: flex-start;  
-      text-align: right;       
-      justify-content: flex-end;
-      font-size: .9em;
-      padding-right: 0.5em;
-      border: 1px solid red;
-    }
-    .row2 {
-      grid-column: 1 / 4;
-      grid-row: 2 / 3;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 10px;
-      border: 1px solid green; 
-    }
-    .row3 {
-      grid-column: 1 / 4;
-      grid-row: 3 / 4;
-      display: flex;
-      justify-self: center; 
-      font-size: .8em;
-      color: var(--myMenuColor); 
-      padding-top: .6em;
-      padding-bottom: .2em;
-      border: 1px solid pink; 
-    }
-    #dBox1 {
-      color: var(--myTextColor);
-      height: 400px;
-      width: 600px;
-      border: green dotted 1px;
-    }
-    .spMsg{
-      min-width: 200px;
-      font-family: var(--myFont);
-      font-size: var(--myFontSize -2);
-      border: none;
-    }
-    #mirrorText{
-      border-bottom: blue solid 1px;
-      padding-left: 3px;
-      margin-left: 2px;
-      display: inline-block;
-      min-width: 400px;
-    }
-
-    /* are these used? 
-      .inlines {
-        display: inline-block;
-      }
-    */
-    .w80p{
-      width: 4em; 
-      /* margin: 10 px solid yellow; */
-      /* margin: 10 px solid yellow; */ 
-      text-align: center;      
-      color: var(--myMenuColor); 
-      padding-top: .4em;
-    }
-  </style>
-  <script>
-    function myInit() {
-      document.getElementById('myInput').focus();
-      /* https://stackoverflow.com/questions/7179535/set-window-to-fullscreen-real-fullscreen-f11-functionality-by-javascript */
-      toggleFullScreen(document.body);
-    }
-  </script>
-</head>
-<body onload="myInit();" onclick="fullScreen(document.body); myInit(); ">
-  <div class="container">
-    <div class="row1">
-      <div class=" w80p">Home</div>
-      <div class=" w80p">Story</div>
-      <div class=" w80p">Util</div>
-      <div class=" w80p">About</div>
-    </div>
-    <div id="dSandbox" class="row2">
-      <h1>
-        <div id="dMyTime">
+    <link rel="stylesheet" href="./styles/main.css" />
+    <noscript>
+      <p>
+        Please enable JavaScript to experience the full functionality of this
+        website.
+      </p>
+    </noscript>
+  </head>
+  <body onload="myInit();" onclick="fullScreen(document.body); ">
+    <div class="container">
+      <div class="row1">
+        <div class="w80p">Home</div>
+        <div class="w80p">Story</div>
+        <div class="w80p">Util</div>
+        <div class="w80p">About</div>
+      </div>
+      <div id="dSandbox" class="row2">
+        <h1>
+          <div id="dMyTime"></div>
+        </h1>
+        <div>
+          <h2>
+            <span id="dMyDate"> </span>
+          </h2>
         </div>
-      </h1>
-      <div>
-        <h2>
-          <span id="dMyDate">
-          </span>
-        </h2>
+        <div>
+          <input id="myInput" class="spMsg" type="text" value="" />
+        </div>
+        <p></p>
+        <div>
+          <span id="mirrorText" class="spMsg"></span>
+        </div>
+        <br />
       </div>
-      <div>
-        <input id="myInput"  class="spMsg" type="text" value="On DEV">
-        </input>
-      </div>
-      <p></p>
-      <div>
-        <span id="mirrorText" class="spMsg"></span>
-      </div>
-      <br>
+      <div class="row3">© CheesesLovesYou.com</div>
     </div>
-    <div class="row3">
-      footer - change for routing after js/css isolation
-    </div>
-  </div>
-  <script>
-    const searchEng = "https://www.startpage.com/sp/search?query=";
-    document.addEventListener('keyup', (event) => {
-      if (event.key === 'Enter') {
-        var foo = document.getElementById('myInput').value;
-        var cleanerString = foo.replace(/ /g, '&nbsp;');
-        document.getElementById('mirrorText').innerText = searchEng + cleanerString;
-        document.location = searchEng + foo;
-      }
-    });
-    function updateClock() {
-      const now = new Date();
-      const myTime = now.toLocaleTimeString('en-US', { hour12: false });
-      const myDate = now.toLocaleDateString('en-US');
-      document.getElementById('dMyTime').innerText = myTime;
-      document.getElementById('dMyDate').innerHTML = myDate; // yes, I could comment this out ;
-    }
-    // <!-- Thank you - full screen! -->
-    // ## https://stackoverflow.com/questions/7495373/how-to-make-browser-full-screen-using-f11-key-event-through-javascript
-    function fullScreen(elem) {
-      /* uncomment the below after happy with dev 
-      // ## The below if statement seems to work better ## if ((document.fullScreenElement && document.fullScreenElement !== null) || (document.msfullscreenElement && document.msfullscreenElement !== null) || (!document.mozFullScreen && !document.webkitIsFullScreen)) {
-      if ((document.fullScreenElement !== undefined && document.fullScreenElement === null) || (document.msFullscreenElement !== undefined && document.msFullscreenElement === null) || (document.mozFullScreen !== undefined && !document.mozFullScreen) || (document.webkitIsFullScreen !== undefined && !document.webkitIsFullScreen)) {
-          if (elem.requestFullScreen) {
-              elem.requestFullScreen();
-          } else if (elem.mozRequestFullScreen) {
-              elem.mozRequestFullScreen();
-          } else if (elem.webkitRequestFullScreen) {
-              elem.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
-          } else if (elem.msRequestFullscreen) {
-              elem.msRequestFullscreen();
-          }
-      } else {
-          if (document.cancelFullScreen) {
-              document.cancelFullScreen();
-          } else if (document.mozCancelFullScreen) {
-              document.mozCancelFullScreen();
-          } else if (document.webkitCancelFullScreen) {
-              document.webkitCancelFullScreen();
-          } else if (document.msExitFullscreen) {
-              document.msExitFullscreen();
-          }
-      }
-      */
-    }
-    updateClock();
-    setInterval(updateClock, 1000);
-  </script>
-  <noscript>
-    <p>Please enable JavaScript to experience the full functionality of this website.</p>
-  </noscript>
+    <script src="./js/main.js"></script>
   </body>
 </html>
