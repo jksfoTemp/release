@@ -1,6 +1,3 @@
-<!--
-https://www.startpage.com/do/search?q=dog
--->
 <!DOCTYPE html>
 <html>
   <head>
@@ -10,43 +7,28 @@ https://www.startpage.com/do/search?q=dog
     TODO: ? textbox onclick clear content, keep focus and display or former text
     TODO: ? onkeypress display search argument and keep it, perhaps stash it in local storage or history? 
     TODO: ? uncomment fullscreen after dev 
+    TODO: ? viewport / responsive design
   -->
     <link rel="stylesheet" href="./styles/main.css" />
+    <script src="./js/main.js"></script>
+    <script src="./js/routing.js"></script>
+  </head>
+  <body onload=" /* myInit(); */ " onclick="fullScreen(document.body); ">
+    <div class="container scrollbars">
+      <div id="header-container" class="row1 scrollbars"></div>
+      <div id="dSandbox" class="row2 scrollbars">
+        <main id="main-content"></main>
+      </div>
+      <div id="footer-container" class="row3" scrollbars></div>
+    </div>
     <noscript>
       <p>
         Please enable JavaScript to experience the full functionality of this
         website.
       </p>
     </noscript>
-  </head>
-  <body onload="myInit();" onclick="fullScreen(document.body); ">
-    <div class="container">
-      <div class="row1">
-        <div class="w80p">Home</div>
-        <div class="w80p">Story</div>
-        <div class="w80p">Util</div>
-        <div class="w80p">About</div>
-      </div>
-      <div id="dSandbox" class="row2">
-        <h1>
-          <div id="dMyTime"></div>
-        </h1>
-        <div>
-          <h2>
-            <span id="dMyDate"> </span>
-          </h2>
-        </div>
-        <div>
-          <input id="myInput" class="spMsg" type="text" value="" />
-        </div>
-        <p></p>
-        <div>
-          <span id="mirrorText" class="spMsg"></span>
-        </div>
-        <br />
-      </div>
-      <div class="row3">© CheesesLovesYou.com</div>
-    </div>
-    <script src="./js/main.js"></script>
+    <script>
+      /* alert("script"); */
+    </script>
   </body>
 </html>

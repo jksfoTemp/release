@@ -1,0 +1,55 @@
+<section id="home-content" class="scrollbars">
+  <script>
+    // console.log("home.html - section home begin");
+    /* alert('section home begin'); */
+  </script>
+  <!-- <h1>Welcome Homes</h1> -->
+  <h1>
+    <div id="dMyTime">dMyTimeHere</div>
+  </h1>
+  <div>
+    <h2>
+      <span id="dMyDate">dMyDate</span>
+    </h2>
+  </div>
+  <div>
+    <input id="myInput" class="spMsg" type="text" value="" />
+  </div>
+  <p></p>
+  <div>
+    <span id="mirrorText" class="spMsg"></span>
+  </div>
+  <br />
+  <script>
+    // console.log("home.html - section home end");
+    // src="./../js/home.js" - inline script to avoid issues with CORS and MIME types
+    // console.log("home.html - section home JS begin");
+
+    function myInit() {
+      document.getElementById("myInput").focus();
+    }
+
+    function updateClock() {
+      let now = new Date();
+      let myTime = now.toLocaleTimeString("en-US", { hour12: false });
+      let myDate = now.toLocaleDateString("en-US");
+      document.getElementById("dMyTime").textContent = myTime;
+      document.getElementById("dMyDate").textContent = myDate; // yes, I could comment this out ;
+    }
+
+    document.addEventListener("keyup", (event) => {
+      if (event.key === "Enter") {
+        var foo = document.getElementById("myInput").value;
+        var cleanerString = foo.replace(/ /g, "&nbsp;");
+        document.getElementById("mirrorText").textContent =
+          searchEng + cleanerString;
+        document.location = searchEng + foo;
+      }
+    });
+
+    myInit();
+    updateClock();
+    setInterval(updateClock, 1000);
+    // console.log("home.html - section home JS end");
+  </script>
+</section>
